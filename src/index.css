@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bordo: #6E1F2F;
+  --color-cafe: #3B2620;
+  --color-rosa: #D9A5A8;
+  --color-blush: #F2DFDC;
+  --color-papel: #F5EFE8;
+  
+  --font-script: 'Pinyon Script', cursive;
+  --font-sans: 'Schibsted Grotesk', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-papel text-cafe;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      @apply opacity-100 translate-y-0 transition-none;
+    }
+  }
+
+  .reveal.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .delay-100 { transition-delay: 80ms; }
+  .delay-200 { transition-delay: 160ms; }
+  .delay-300 { transition-delay: 240ms; }
+  .delay-400 { transition-delay: 320ms; }
+}

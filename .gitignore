@@ -141,3 +141,15 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Build, cache e ambiente
+build/
+.env*
+.env.local
+vite.config.*.timestamp-*
+*-debug.log*
+logs/
+.claude-replay.*
+.tmp-*
+/.plugins/
+/.opencode-skills/
