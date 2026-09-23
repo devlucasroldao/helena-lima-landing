@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react"
-import { CONTACTS, CONTACT_ICONS, MONOGRAM_URL, NAV_LINKS } from "../constants"
+import {
+  CONTACTS,
+  CONTACT_ICONS,
+  CREDIT,
+  MONOGRAM_URL,
+  NAV_LINKS,
+} from "../constants"
 import Logo from "./Logo"
 import Tag from "./Tag"
 
@@ -121,8 +127,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-bordo">
+        {/* Mobile: empilhado. Desktop: © à esquerda, crédito à direita. */}
+        <div className="mt-12 pt-6 border-t border-bordo flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
           <p className="font-sans text-xs text-cafe">© 2026 Helena Lima</p>
+          <p className="font-sans text-xs text-cafe">
+            Site criado por{" "}
+            <a
+              href={CREDIT.URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center min-h-[44px] font-semibold text-bordo interactive"
+            >
+              <span className="nav-link">{CREDIT.NAME}</span>
+            </a>
+          </p>
         </div>
       </div>
     </footer>

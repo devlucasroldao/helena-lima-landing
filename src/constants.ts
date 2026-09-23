@@ -11,6 +11,12 @@ export const CONTACTS = {
   INSTAGRAM_HANDLE: "@helenagestao",
 }
 
+// Crédito de quem criou o site (rodapé).
+export const CREDIT = {
+  NAME: "Lucas Roldão",
+  URL: "https://devlucasroldao.vercel.app/",
+}
+
 // Ícones de contato usados no rodapé.
 export const CONTACT_ICONS = {
   INSTAGRAM: InstagramIcon,
