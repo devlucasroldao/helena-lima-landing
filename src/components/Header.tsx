@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { CONTACTS } from "../constants"
 import WhatsAppIcon from "./WhatsAppIcon"
+import Logo from "./Logo"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,14 +34,8 @@ export default function Header() {
         className="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between interactive"
         style={{ transform: scrolled ? undefined : "translateY(8px)" }}
       >
-        <a
-          href="#"
-          className="flex items-baseline gap-1 text-bordo no-underline"
-        >
-          <span className="font-script text-3xl md:text-4xl">Helena</span>
-          <span className="font-sans font-medium text-xl md:text-2xl tracking-[-0.02em]">
-            Lima
-          </span>
+        <a href="#" className="flex items-center min-h-[44px] no-underline">
+          <Logo className="text-4xl" />
         </a>
 
         {/* Desktop Nav */}

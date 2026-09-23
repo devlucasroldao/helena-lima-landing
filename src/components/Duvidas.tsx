@@ -45,14 +45,15 @@ export default function Duvidas() {
       id="duvidas"
       className="bg-papel py-20 px-6 border-y-[1.5px] border-bordo"
     >
-      <div className="max-w-6xl mx-auto">
+      {/* Coluna única de ~768px: título, linha e lista com a mesma largura. */}
+      <div className="max-w-3xl mx-auto">
         <SectionTitle
           accent="Dúvidas"
           title="frequentes"
           className="mb-8 reveal"
         />
 
-        <div className="max-w-4xl">
+        <div>
           {duvidas.map((item, index) => {
             const isOpen = openIndex === index
             return (

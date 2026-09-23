@@ -12,8 +12,19 @@ Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, ag
 ## Estrutura
 
 - `src/App.tsx`: monta as seções na ordem da página
-- `src/components/`: uma seção por arquivo (Header, Hero, Dores, Servicos, ComoFunciona, Formatos, Experiencia, Depoimentos, Sobre, Duvidas, CtaFinal, Footer), mais os componentes compartilhados `SectionTitle` (acento + título na mesma linha) e `WhatsAppIcon` (glifo oficial, Simple Icons CC0)
-- `src/constants.ts`: **todos os contatos** (WhatsApp, e-mail, Instagram). Nunca escrever link ou contato direto em componente; sempre importar de `CONTACTS`. Também guarda os depoimentos (`TESTIMONIALS`).
+- `src/components/`, seções (uma por arquivo, na ordem da página): `Header`, `Hero`, `Dores`, `Servicos`, `ComoFunciona`, `Formatos`, `Experiencia`, `Depoimentos`, `Sobre`, `Duvidas`, `CtaFinal`, `Footer`
+- `src/components/`, compartilhados:
+  - `SectionTitle`: título de seção (acento em Pinyon Script + título na mesma linha)
+  - `Logo`: "Helena Lima" em Pinyon Script, usado no header e no rodapé
+  - `Tag`: etiqueta (pílula rosa antigo, texto bordô, 700, caixa alta, letter-spacing 0.16em)
+  - `WhatsAppIcon` e `InstagramIcon`: glifos oficiais (Simple Icons, CC0), `fill="currentColor"`
+  - `WhatsAppFlutuante`: botão flutuante de WhatsApp, só no mobile
+- `src/constants.ts`: **todos os contatos e links**. Nunca escrever link ou contato direto em componente; sempre importar daqui.
+  - `CONTACTS`: WhatsApp (URL e número exibido), e-mail, Instagram (URL e `INSTAGRAM_HANDLE`)
+  - `CONTACT_ICONS`: ícones de contato do rodapé (Instagram, WhatsApp, e-mail)
+  - `MONOGRAM_URL`: monograma (o mesmo arquivo do favicon, `/favicon.svg`)
+  - `NAV_LINKS`: links de navegação do rodapé, na ordem da página
+  - `TESTIMONIALS`: depoimentos
 - `src/index.css`: import do Tailwind, tokens de cor/fonte e estilos globais
 - `index.html`: shell do Vite; é aqui que as Google Fonts são carregadas
 - `vite.config.ts`: configuração padrão (React, Tailwind e alias `@` para `src`). O `<head>` (title, meta, Open Graph) é fixo no `index.html`, não gerado pelo Vite.
@@ -57,7 +68,7 @@ Cores (tokens do Tailwind entre parênteses):
 
 Fontes:
 
-- **Pinyon Script** (`font-script`): só como acento em 1 ou 2 palavras de título e no "Helena" do logo.
+- **Pinyon Script** (`font-script`): só como acento em 1 ou 2 palavras de título e no logo ("Helena Lima").
 - **Schibsted Grotesk** (`font-sans`): todo o resto. O `body` já usa essa fonte.
 - As fontes são carregadas por `<link>` no `<head>` do `index.html`. **Não usar `@import` do Google Fonts no CSS**: depois do `@import 'tailwindcss'` ele é descartado e a página cai na fonte do sistema.
 
@@ -65,6 +76,17 @@ Estilo:
 
 - Sem gradientes, sem sombras pesadas.
 - Animações sutis, sempre respeitando `prefers-reduced-motion`.
+
+## Componentes: regras
+
+- **Logo** sempre via `Logo.tsx`. Nunca montar o nome à mão.
+- **Etiquetas** sempre via `Tag.tsx`. Não criar outro estilo de etiqueta.
+- **Ícones de marca** (WhatsApp, Instagram) sempre com o path oficial do Simple Icons, sem redesenhar nem trocar por ícone genérico.
+- **Botão flutuante de WhatsApp** (`WhatsAppFlutuante`): some enquanto o hero (`#inicio`), o CTA final (`#contato`) ou o rodapé estão na tela. Se mudar esses ids, atualize o componente.
+
+## Fluxo de trabalho
+
+- **Uma sessão por vez editando o projeto.** Duas sessões em paralelo sobrescrevem o trabalho uma da outra.
 
 ## Mobile-first
 

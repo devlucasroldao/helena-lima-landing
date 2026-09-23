@@ -3,7 +3,7 @@ import SectionTitle from "./SectionTitle"
 export default function Sobre() {
   return (
     <div className="bg-blush border-t-[1.5px] border-bordo">
-      <section className="py-20 px-6 max-w-6xl mx-auto flex flex-col gap-8 md:grid md:grid-cols-2 md:grid-rows-[1fr_auto] md:gap-x-12 md:gap-y-8">
+      <section id="sobre" className="py-20 px-6 max-w-6xl mx-auto flex flex-col gap-8 md:grid md:grid-cols-2 md:grid-rows-[1fr_auto] md:gap-x-12 md:gap-y-8">
         <SectionTitle
           accent="Prazer,"
           title="Helena Lima"

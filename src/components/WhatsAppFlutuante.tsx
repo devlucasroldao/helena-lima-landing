@@ -3,28 +3,33 @@ import { CONTACTS } from "../constants"
 import WhatsAppIcon from "./WhatsAppIcon"
 
 // Botão flutuante (só mobile). Aparece depois que o hero sai da tela e some
-// quando o CTA final está visível, pra não duplicar o botão.
+// quando o CTA final está visível, pra não duplicar o botão. Também some no
+// rodapé, pra não cobrir os contatos.
 export default function WhatsAppFlutuante() {
   const [heroVisivel, setHeroVisivel] = useState(true)
   const [ctaVisivel, setCtaVisivel] = useState(false)
+  const [rodapeVisivel, setRodapeVisivel] = useState(false)
 
   useEffect(() => {
     const hero = document.getElementById("inicio")
     const cta = document.getElementById("contato")
-    if (!hero || !cta) return
+    const rodape = document.querySelector("footer")
+    if (!hero || !cta || !rodape) return
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target === hero) setHeroVisivel(entry.isIntersecting)
         if (entry.target === cta) setCtaVisivel(entry.isIntersecting)
+        if (entry.target === rodape) setRodapeVisivel(entry.isIntersecting)
       })
     })
     observer.observe(hero)
     observer.observe(cta)
+    observer.observe(rodape)
     return () => observer.disconnect()
   }, [])
 
-  const visivel = !heroVisivel && !ctaVisivel
+  const visivel = !heroVisivel && !ctaVisivel && !rodapeVisivel
 
   return (
     <a

@@ -56,7 +56,8 @@
     outline-color: var(--color-papel);
   }
 
-  /* Link do menu (desktop): sublinhado bordô fino. */
+  /* Link do menu (desktop) e do rodapé: sublinhado bordô fino. No rodapé o
+     .nav-link é o texto dentro do link, e o hover vale pro item inteiro. */
   .nav-link {
     position: relative;
   }
@@ -72,7 +73,11 @@
     transform-origin: left;
   }
   .nav-link:hover::after,
-  .nav-link:focus-visible::after {
+  .nav-link:focus-visible::after,
+  a:hover > .nav-link::after,
+  a:focus-visible > .nav-link::after,
+  button:hover > .nav-link::after,
+  button:focus-visible > .nav-link::after {
     transform: scaleX(1);
   }
 
