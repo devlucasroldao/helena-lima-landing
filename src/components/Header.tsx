@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { Menu, X, MessageCircle } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { CONTACTS } from "../constants"
+import WhatsAppIcon from "./WhatsAppIcon"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -57,7 +58,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="bg-bordo text-papel px-6 py-2 rounded-full font-sans font-medium hover:bg-[#5A1926] transition-all hover:-translate-y-[1px] flex items-center gap-2"
           >
-            <MessageCircle size={16} strokeWidth={1.5} />
+            <WhatsAppIcon size={16} />
             Conversar
           </a>
         </nav>
@@ -91,7 +92,7 @@ export default function Header() {
             onClick={() => setIsOpen(false)}
             className="bg-bordo text-papel px-6 py-3 rounded-full font-sans font-medium text-center w-full flex items-center justify-center gap-2"
           >
-            <MessageCircle size={18} strokeWidth={1.5} />
+            <WhatsAppIcon size={18} />
             Conversar
           </a>
         </div>

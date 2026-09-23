@@ -9,7 +9,7 @@ export default function Footer() {
             Helena Lima
           </p>
           <p className="font-sans text-cafe text-sm">
-            Gestão pra pequenos negócios
+            Gestão pra negócios
           </p>
         </div>
 

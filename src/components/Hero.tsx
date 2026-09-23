@@ -1,5 +1,5 @@
-import { MessageCircle } from "lucide-react"
 import { CONTACTS } from "../constants"
+import WhatsAppIcon from "./WhatsAppIcon"
 
 export default function Hero() {
   return (
@@ -14,7 +14,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="text-cafe text-lg md:text-xl font-sans mb-8 max-w-xl">
-          Pra MEIs, autônomos e pequenas empresas, 100% online. Antes de
+          Pra MEIs, autônomos e empresas, 100% online. Antes de
           organizar qualquer coisa, eu entendo como o seu negócio funciona.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -24,7 +24,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="bg-bordo text-papel px-8 py-4 rounded-full font-sans font-medium text-center hover:bg-[#5A1926] hover:-translate-y-[1px] transition-all min-h-[44px] flex items-center justify-center gap-2"
           >
-            <MessageCircle size={18} strokeWidth={1.5} />
+            <WhatsAppIcon size={18} />
             Conversar no WhatsApp
           </a>
           <a

@@ -1,18 +1,12 @@
-import { MessageCircle } from "lucide-react"
 import { CONTACTS } from "../constants"
+import WhatsAppIcon from "./WhatsAppIcon"
+import SectionTitle from "./SectionTitle"
 
 export default function Formatos() {
   return (
     <section className="bg-blush py-20 px-6 border-y-[1.5px] border-bordo">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-bordo flex flex-col mb-16 reveal">
-          <span className="font-script text-6xl md:text-7xl leading-none">
-            Formas
-          </span>
-          <span className="font-sans font-medium text-3xl md:text-4xl tracking-[-0.02em] pb-4 border-b-[1.5px] border-bordo mt-2">
-            de trabalhar comigo
-          </span>
-        </h2>
+        <SectionTitle accent="Formas" title="de trabalhar comigo" className="mb-16 reveal" />
 
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           {/* Cartão Pontual */}
@@ -49,7 +43,7 @@ export default function Formatos() {
             rel="noopener noreferrer"
             className="bg-bordo text-papel px-8 py-4 rounded-full font-sans font-medium hover:bg-[#5A1926] hover:-translate-y-[1px] transition-all text-center w-full md:w-auto whitespace-nowrap min-h-[44px] flex items-center justify-center gap-2"
           >
-            <MessageCircle size={18} strokeWidth={1.5} />
+            <WhatsAppIcon size={18} />
             Conversar no WhatsApp
           </a>
         </div>

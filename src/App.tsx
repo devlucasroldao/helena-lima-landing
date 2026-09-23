@@ -6,6 +6,7 @@ import Servicos from "./components/Servicos"
 import ComoFunciona from "./components/ComoFunciona"
 import Formatos from "./components/Formatos"
 import Experiencia from "./components/Experiencia"
+import Depoimentos from "./components/Depoimentos"
 import Sobre from "./components/Sobre"
 import Duvidas from "./components/Duvidas"
 import CtaFinal from "./components/CtaFinal"
@@ -41,6 +42,7 @@ export default function App() {
         <ComoFunciona />
         <Formatos />
         <Experiencia />
+        <Depoimentos />
         <Sobre />
         <Duvidas />
         <CtaFinal />

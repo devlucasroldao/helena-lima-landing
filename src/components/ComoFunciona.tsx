@@ -1,3 +1,5 @@
+import SectionTitle from "./SectionTitle"
+
 export default function ComoFunciona() {
   const passos = [
     {
@@ -28,14 +30,7 @@ export default function ComoFunciona() {
       id="comofunciona"
       className="py-20 px-6 max-w-6xl mx-auto bg-papel"
     >
-      <h2 className="text-bordo flex flex-col mb-16 reveal">
-        <span className="font-script text-6xl md:text-7xl leading-none">
-          Como
-        </span>
-        <span className="font-sans font-medium text-3xl md:text-4xl tracking-[-0.02em] pb-4 border-b-[1.5px] border-bordo mt-2">
-          funciona
-        </span>
-      </h2>
+      <SectionTitle accent="Como" title="funciona?" className="mb-16 reveal" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-4">
         {passos.map((passo, index) => (

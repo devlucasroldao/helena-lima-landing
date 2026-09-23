@@ -1,3 +1,5 @@
+import SectionTitle from "./SectionTitle"
+
 export default function Sobre() {
   return (
     <div className="bg-blush border-t-[1.5px] border-bordo">
@@ -10,14 +12,7 @@ export default function Sobre() {
           </div>
         </div>
         <div className="flex-1 flex flex-col items-start order-1 md:order-2 reveal delay-100">
-          <h2 className="text-bordo flex flex-col mb-8 w-full">
-            <span className="font-script text-6xl md:text-7xl leading-none">
-              Prazer,
-            </span>
-            <span className="font-sans font-medium text-3xl md:text-4xl tracking-[-0.02em] pb-4 border-b-[1.5px] border-bordo mt-2">
-              Helena Lima
-            </span>
-          </h2>
+          <SectionTitle accent="Prazer," title="Helena Lima" className="mb-8 w-full" />
           <div className="font-sans text-cafe text-lg space-y-4">
             <p>
               Comecei aos 14 anos, como secretária num salão, cuidando da parte
@@ -27,7 +22,7 @@ export default function Sobre() {
               assumindo o financeiro e a organização de tudo.
             </p>
             <p>
-              Hoje atendo pequenos negócios de todo o Brasil, online. Gosto de
+              Hoje atendo negócios de todo o Brasil, online. Gosto de
               entender antes de organizar: cada negócio funciona de um jeito, e
               a solução precisa caber na sua rotina.
             </p>

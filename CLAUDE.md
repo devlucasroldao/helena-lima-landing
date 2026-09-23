@@ -1,6 +1,6 @@
 # Landing page — Helena Lima
 
-Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, agenda e processos) para MEIs, autônomos e pequenas empresas. Atendimento 100% online.
+Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, agenda e processos) para MEIs, autônomos e empresas. Atendimento 100% online.
 
 ## Stack
 
@@ -12,8 +12,8 @@ Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, ag
 ## Estrutura
 
 - `src/App.tsx`: monta as seções na ordem da página
-- `src/components/`: uma seção por arquivo (Header, Hero, Dores, Servicos, ComoFunciona, Formatos, Experiencia, Sobre, Duvidas, CtaFinal, Footer)
-- `src/constants.ts`: **todos os contatos** (WhatsApp, e-mail, Instagram). Nunca escrever link ou contato direto em componente; sempre importar de `CONTACTS`.
+- `src/components/`: uma seção por arquivo (Header, Hero, Dores, Servicos, ComoFunciona, Formatos, Experiencia, Depoimentos, Sobre, Duvidas, CtaFinal, Footer), mais os componentes compartilhados `SectionTitle` (acento + título na mesma linha) e `WhatsAppIcon` (glifo oficial, Simple Icons CC0)
+- `src/constants.ts`: **todos os contatos** (WhatsApp, e-mail, Instagram). Nunca escrever link ou contato direto em componente; sempre importar de `CONTACTS`. Também guarda os depoimentos (`TESTIMONIALS`).
 - `src/index.css`: import do Tailwind, tokens de cor/fonte e estilos globais
 - `index.html`: shell do Vite; é aqui que as Google Fonts são carregadas
 - `vite.config.ts`: configuração padrão (React, Tailwind e alias `@` para `src`). O `<head>` (title, meta, Open Graph) é fixo no `index.html`, não gerado pelo Vite.
@@ -22,6 +22,26 @@ Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, ag
 
 - **A copy é definitiva.** Nunca reescrever, resumir, "melhorar" ou adicionar textos sem pedido explícito.
 - **Nunca inventar** depoimentos, números, métricas, clientes, preços ou certificações.
+
+## Depoimentos
+
+A seção Depoimentos (entre Experiência e Sobre) só aparece quando `TESTIMONIALS`, em `src/constants.ts`, tem pelo menos 1 item. Com o array vazio, nada é renderizado.
+
+Para adicionar um depoimento, inclua um objeto no array:
+
+```ts
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    texto: "Texto do depoimento, exatamente como a cliente escreveu.",
+    nome: "Nome da pessoa",
+    cargo: "Cargo",
+    empresa: "Empresa",
+  },
+]
+```
+
+- Só depoimentos reais, com autorização de quem escreveu. Nunca inventar.
+- Com 1 depoimento, o cartão aparece centralizado; com 2 ou mais, em grade (empilhada no mobile).
 
 ## Identidade visual
 

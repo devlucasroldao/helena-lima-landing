@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import SectionTitle from "./SectionTitle"
 
 export default function Duvidas() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -8,12 +9,12 @@ export default function Duvidas() {
     {
       pergunta: "Você atende de onde?",
       resposta:
-        "Atendo 100% online, pequenos negócios de qualquer lugar do Brasil.",
+        "Atendo 100% online, negócios de qualquer lugar do Brasil.",
     },
     {
       pergunta: "Preciso ter CNPJ?",
       resposta:
-        "Não. Atendo pequenas empresas, MEIs e também autônomos pessoa física.",
+        "Não. Atendo empresas, MEIs e também autônomos pessoa física.",
     },
     {
       pergunta: "Você substitui o meu contador?",
@@ -47,14 +48,7 @@ export default function Duvidas() {
       className="bg-papel py-20 px-6 border-y-[1.5px] border-bordo"
     >
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-bordo flex flex-col mb-12 text-center items-center reveal">
-          <span className="font-script text-6xl md:text-7xl leading-none">
-            Dúvidas
-          </span>
-          <span className="font-sans font-medium text-3xl md:text-4xl tracking-[-0.02em] pb-4 border-b-[1.5px] border-bordo inline-block w-full max-w-md mt-2">
-            frequentes
-          </span>
-        </h2>
+        <SectionTitle accent="Dúvidas" title="frequentes" align="center" className="mb-12 w-fit mx-auto reveal" />
 
         <div className="space-y-4">
           {duvidas.map((item, index) => {

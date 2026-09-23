@@ -5,3 +5,13 @@ export const CONTACTS = {
   EMAIL: "helenalimagestao@gmail.com",
   INSTAGRAM_URL: "https://instagram.com/helenagestao",
 }
+
+export type Testimonial = {
+  texto: string
+  nome: string
+  cargo: string
+  empresa: string
+}
+
+// Depoimentos reais de clientes. Com o array vazio, a seção não aparece.
+export const TESTIMONIALS: Testimonial[] = []
