@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Analytics } from "@vercel/analytics/react"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import Dores from "./components/Dores"
@@ -50,6 +51,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppFlutuante />
+      <Analytics />
     </div>
   )
 }

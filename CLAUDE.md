@@ -26,7 +26,7 @@ Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, ag
   - `NAV_LINKS`: links de navegação do rodapé, na ordem da página
   - `TESTIMONIALS`: depoimentos
 - `src/index.css`: import do Tailwind, tokens de cor/fonte e estilos globais
-- `public/`: arquivos servidos como estão (favicons, `og-image.png`)
+- `public/`: arquivos servidos como estão (favicons, `og-image.jpg`, `robots.txt`)
 - `public/fotos/`: fotos da Helena (`helena-hero.webp` e `helena-hero-640.webp` no hero, `helena-sobre.webp` no Sobre)
 - `index.html`: shell do Vite; é aqui que as Google Fonts são carregadas
 - `vite.config.ts`: configuração padrão (React, Tailwind e alias `@` para `src`). O `<head>` (title, meta, Open Graph) é fixo no `index.html`, não gerado pelo Vite.
@@ -91,6 +91,17 @@ Estilo:
 - Sempre em **WebP**, dentro de `public/fotos/`.
 - Toda `<img>` sempre com `width`, `height` (dimensões reais do arquivo, pra não haver salto de layout) e `alt`.
 
+## Imagem de compartilhamento (og-image)
+
+- `public/og-image.jpg`, 1200x630, referenciada por URL absoluta em `og:image` e `twitter:image` no `index.html`.
+- **Conteúdo importante no quadrado central de 630x630**: o WhatsApp recorta a miniatura no centro, e o que estiver nas laterais some.
+- Ao trocar a imagem, manter nome, tamanho e as metas `og:image:type`, `og:image:width`, `og:image:height` e `og:image:alt` coerentes.
+
+## SEO
+
+- `public/robots.txt` libera tudo.
+- **Sem sitemap por enquanto**: ele precisa da URL do domínio final. Criar junto com a troca de domínio (ver Pendências).
+
 ## Fluxo de trabalho
 
 - **Uma sessão por vez editando o projeto.** Duas sessões em paralelo sobrescrevem o trabalho uma da outra.
@@ -98,3 +109,14 @@ Estilo:
 ## Mobile-first
 
 A maior parte do acesso vem do Instagram, pelo celular. Desenhar e testar primeiro na largura de celular e depois ampliar com `md:`/`lg:`. Alvos de toque com no mínimo 44px.
+
+## Analytics
+
+Vercel Web Analytics (`<Analytics />` de `@vercel/analytics/react`, no `App.tsx`). Só as visitas padrão: sem eventos personalizados e sem cookies.
+
+## Pendências da versão 2
+
+- **Depoimentos**: array `TESTIMONIALS` vazio, aguardando o texto da Conecte Telecom.
+- **Domínio próprio**: trocar `og:url`, `og:image` e `twitter:image` no `index.html`; criar `sitemap.xml`; cadastrar no Google Search Console.
+- **Pré-renderização do HTML para SEO**: hoje o conteúdo só existe no JavaScript.
+- **E-mail no domínio próprio**, substituindo o Gmail em `CONTACTS.EMAIL` (`src/constants.ts`).
