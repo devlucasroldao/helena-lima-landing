@@ -18,7 +18,7 @@ export default function Footer() {
             href={CONTACTS.INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-cafe hover:text-bordo transition-colors text-sm font-medium"
+            className="font-sans text-cafe hover:text-bordo interactive text-sm font-medium"
           >
             Instagram: @helenagestao
           </a>
@@ -26,13 +26,13 @@ export default function Footer() {
             href={CONTACTS.WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-cafe hover:text-bordo transition-colors text-sm font-medium"
+            className="font-sans text-cafe hover:text-bordo interactive text-sm font-medium"
           >
             WhatsApp: {CONTACTS.WHATSAPP_DISPLAY}
           </a>
           <a
             href={`mailto:${CONTACTS.EMAIL}`}
-            className="font-sans text-cafe hover:text-bordo transition-colors text-sm font-medium"
+            className="font-sans text-cafe hover:text-bordo interactive text-sm font-medium"
           >
             E-mail: {CONTACTS.EMAIL}
           </a>

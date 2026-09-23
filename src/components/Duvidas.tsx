@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, type CSSProperties } from "react"
 import { ChevronDown } from "lucide-react"
 import SectionTitle from "./SectionTitle"
 
@@ -8,13 +8,11 @@ export default function Duvidas() {
   const duvidas = [
     {
       pergunta: "Você atende de onde?",
-      resposta:
-        "Atendo 100% online, negócios de qualquer lugar do Brasil.",
+      resposta: "Atendo 100% online, negócios de qualquer lugar do Brasil.",
     },
     {
       pergunta: "Preciso ter CNPJ?",
-      resposta:
-        "Não. Atendo empresas, MEIs e também autônomos pessoa física.",
+      resposta: "Não. Atendo empresas, MEIs e também autônomos pessoa física.",
     },
     {
       pergunta: "Você substitui o meu contador?",
@@ -47,42 +45,45 @@ export default function Duvidas() {
       id="duvidas"
       className="bg-papel py-20 px-6 border-y-[1.5px] border-bordo"
     >
-      <div className="max-w-4xl mx-auto">
-        <SectionTitle accent="Dúvidas" title="frequentes" align="center" className="mb-12 w-fit mx-auto reveal" />
+      <div className="max-w-6xl mx-auto">
+        <SectionTitle
+          accent="Dúvidas"
+          title="frequentes"
+          className="mb-8 reveal"
+        />
 
-        <div className="space-y-4">
+        <div className="max-w-4xl">
           {duvidas.map((item, index) => {
             const isOpen = openIndex === index
             return (
               <div
                 key={index}
-                className="border-[1.5px] border-bordo rounded-[10px] bg-papel overflow-hidden reveal hover:bg-white transition-colors"
-                style={{ transitionDelay: `${index * 80}ms` }}
+                className="border-b border-bordo/30 reveal"
+                style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
               >
                 <button
                   onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-rosa/10 transition-colors min-h-[44px]"
+                  aria-expanded={isOpen}
+                  aria-controls={`duvida-${index}`}
+                  className="group w-full flex items-center justify-between py-5 text-left min-h-[44px]"
                 >
-                  <span className="font-sans font-medium text-lg text-bordo pr-8">
+                  <span className="font-sans font-medium text-lg text-bordo pr-8 group-hover:underline underline-offset-4 decoration-1">
                     {item.pergunta}
                   </span>
                   <span
-                    className={`text-bordo flex-shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                    className="text-bordo flex-shrink-0 interactive"
+                    style={{ transform: isOpen ? "rotate(180deg)" : undefined }}
                   >
                     <ChevronDown size={24} strokeWidth={1.5} />
                   </span>
                 </button>
-                <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="p-6 pt-0 font-sans text-cafe border-t-[1.5px] border-bordo/20">
-                    {item.resposta}
+                {isOpen && (
+                  <div id={`duvida-${index}`} className="accordion-panel">
+                    <div className="pb-5 pr-8 font-sans text-cafe">
+                      {item.resposta}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             )
           })}

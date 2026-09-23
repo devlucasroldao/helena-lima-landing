@@ -3,7 +3,7 @@ import WhatsAppIcon from "./WhatsAppIcon"
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-16 px-6 max-w-6xl mx-auto min-h-[90vh] flex flex-col md:flex-row items-center gap-12 bg-papel">
+    <section id="inicio" className="pt-[calc(6rem+env(safe-area-inset-top))] md:pt-[calc(8rem+env(safe-area-inset-top))] pb-16 px-6 max-w-6xl mx-auto min-h-[90vh] flex flex-col md:flex-row items-center gap-12 bg-papel">
       <div className="flex-1 flex flex-col items-start reveal">
         <h1 className="text-bordo flex flex-col mb-6">
           <span className="font-script text-7xl md:text-8xl leading-none">
@@ -22,20 +22,20 @@ export default function Hero() {
             href={CONTACTS.WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-bordo text-papel px-8 py-4 rounded-full font-sans font-medium text-center hover:bg-[#5A1926] hover:-translate-y-[1px] transition-all min-h-[44px] flex items-center justify-center gap-2"
+            className="bg-bordo text-papel px-8 py-4 rounded-full font-sans font-medium text-center hover:bg-bordo-escuro btn min-h-[44px] flex items-center justify-center gap-2"
           >
             <WhatsAppIcon size={18} />
             Conversar no WhatsApp
           </a>
           <a
             href="#comofunciona"
-            className="border-[1.5px] border-bordo text-bordo bg-transparent px-8 py-4 rounded-full font-sans font-medium text-center hover:bg-bordo hover:text-papel hover:-translate-y-[1px] transition-all min-h-[44px] flex items-center justify-center"
+            className="border-[1.5px] border-bordo text-bordo bg-transparent px-8 py-4 rounded-full font-sans font-medium text-center hover:bg-bordo hover:text-papel btn min-h-[44px] flex items-center justify-center"
           >
             Ver como funciona
           </a>
         </div>
       </div>
-      <div className="flex-1 w-full max-w-md mx-auto aspect-[4/5] bg-rosa/30 rounded-2xl flex items-center justify-center border-[1.5px] border-bordo border-dashed overflow-hidden reveal delay-100">
+      <div className="md:flex-1 w-full max-w-[min(28rem,56vh)] mx-auto aspect-[4/5] bg-rosa/30 rounded-2xl flex items-center justify-center border-[1.5px] border-bordo border-dashed overflow-hidden reveal reveal-delay-1">
         {/* Placeholder image block */}
         <span className="text-bordo font-medium font-sans uppercase tracking-widest text-sm">
           [foto da Helena]

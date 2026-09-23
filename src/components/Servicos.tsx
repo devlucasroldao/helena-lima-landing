@@ -1,10 +1,10 @@
+import type { CSSProperties } from "react"
 import { Wallet, MessageCircle, CalendarDays, ListChecks } from "lucide-react"
 import SectionTitle from "./SectionTitle"
 
 export default function Servicos() {
   const servicos = [
     {
-      etiqueta: "FINANCEIRO",
       titulo: "Organização financeira",
       icon: <Wallet strokeWidth={1.5} size={24} className="text-bordo" />,
       items: [
@@ -16,7 +16,6 @@ export default function Servicos() {
       ],
     },
     {
-      etiqueta: "ATENDIMENTO",
       titulo: "Atendimento ao cliente",
       icon: (
         <MessageCircle strokeWidth={1.5} size={24} className="text-bordo" />
@@ -28,7 +27,6 @@ export default function Servicos() {
       ],
     },
     {
-      etiqueta: "AGENDA",
       titulo: "Agenda do negócio",
       icon: <CalendarDays strokeWidth={1.5} size={24} className="text-bordo" />,
       items: [
@@ -37,7 +35,6 @@ export default function Servicos() {
       ],
     },
     {
-      etiqueta: "PROCESSOS",
       titulo: "Organização de processos",
       icon: <ListChecks strokeWidth={1.5} size={24} className="text-bordo" />,
       items: [
@@ -50,24 +47,29 @@ export default function Servicos() {
     <section id="servicos" className="py-20 px-6 max-w-6xl mx-auto bg-papel">
       <SectionTitle accent="Como" title="posso ajudar?" className="mb-16 reveal" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 md:gap-y-12 mb-16">
         {servicos.map((servico, index) => (
           <div
             key={index}
-            className="flex flex-col items-start reveal"
-            style={{ transitionDelay: `${index * 80}ms` }}
+            // Linha fina entre serviços: no mobile acima de cada um (menos o
+            // primeiro); em 2 colunas, só acima da segunda linha.
+            className={`flex flex-col items-start reveal ${
+              index === 0
+                ? ""
+                : index === 1
+                  ? "border-t border-bordo/30 pt-10 md:border-t-0 md:pt-0"
+                  : "border-t border-bordo/30 pt-10 md:pt-12"
+            }`}
+            style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 rounded-full bg-rosa flex items-center justify-center flex-shrink-0">
                 {servico.icon}
               </div>
-              <span className="border-[1.5px] border-bordo rounded-full px-3 py-1 font-sans font-bold text-xs uppercase tracking-[0.16em] text-bordo inline-block">
-                {servico.etiqueta}
-              </span>
+              <h3 className="font-sans font-medium text-2xl text-bordo tracking-[-0.02em]">
+                {servico.titulo}
+              </h3>
             </div>
-            <h3 className="font-sans font-medium text-2xl text-bordo tracking-[-0.02em] mb-4">
-              {servico.titulo}
-            </h3>
             <ul className="list-none space-y-3 p-0 m-0">
               {servico.items.map((item, i) => (
                 <li key={i} className="font-sans text-cafe flex items-start">

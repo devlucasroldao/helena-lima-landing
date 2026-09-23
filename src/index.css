@@ -2,39 +2,170 @@
 
 @theme {
   --color-bordo: #6E1F2F;
+  --color-bordo-escuro: #5A1926;
   --color-cafe: #3B2620;
   --color-rosa: #D9A5A8;
   --color-blush: #F2DFDC;
   --color-papel: #F5EFE8;
-  
+
   --font-script: 'Pinyon Script', cursive;
   --font-sans: 'Schibsted Grotesk', sans-serif;
 }
 
 @layer base {
+  html {
+    /* O estado active dos botões substitui o flash cinza do toque. */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Com viewport-fit=cover, o conteúdo não pode ficar embaixo do notch no
+     iPhone deitado. Em pé as laterais valem 0. */
   body {
     @apply font-sans bg-papel text-cafe;
-    scroll-behavior: smooth;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
-}
 
-@layer utilities {
-  .reveal {
-    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  /* Altura do header fixo (h-16 no mobile, h-20 a partir de md, + borda de 1px
+     + área segura do topo), pra o título da seção não ficar embaixo dele. */
+  section[id] {
+    scroll-margin-top: calc(4rem + 1px + env(safe-area-inset-top));
   }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      @apply opacity-100 translate-y-0 transition-none;
+  @media (width >= 48rem) {
+    section[id] {
+      scroll-margin-top: calc(5rem + 1px + env(safe-area-inset-top));
     }
   }
 
-  .reveal.is-visible {
-    @apply opacity-100 translate-y-0;
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-bordo);
+    outline-offset: 3px;
   }
-  
-  .delay-100 { transition-delay: 80ms; }
-  .delay-200 { transition-delay: 160ms; }
-  .delay-300 { transition-delay: 240ms; }
-  .delay-400 { transition-delay: 320ms; }
+
+  ::selection {
+    background-color: var(--color-rosa);
+    color: var(--color-bordo);
+  }
+}
+
+@layer components {
+  /* Contorno de foco claro pra elementos sobre fundo bordô. */
+  .focus-papel:focus-visible {
+    outline-color: var(--color-papel);
+  }
+
+  /* Link do menu (desktop): sublinhado bordô fino. */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1.5px;
+    background-color: var(--color-bordo);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Menu mobile: fechado fica invisível e inerte (atributo inert no componente). */
+  .mobile-menu {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .mobile-menu[data-open='true'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Header fixo: o fundo cobre a área do notch e o conteúdo começa abaixo
+     dela (o menu mobile, em top-full, desce junto). */
+  .header-safe {
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Botão flutuante do WhatsApp: 16px da borda + área segura do iPhone.
+     Escondido fica invisível e sem clique. */
+  .whatsapp-flutuante {
+    right: calc(1rem + env(safe-area-inset-right));
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    opacity: 0;
+    pointer-events: none;
+  }
+  .whatsapp-flutuante[data-visible='true'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .reveal-delay-1 { --reveal-delay: 80ms; }
+  .reveal-delay-2 { --reveal-delay: 160ms; }
+  .reveal-delay-3 { --reveal-delay: 240ms; }
+
+  /* Movimento só pra quem não pediu redução de movimento. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .interactive,
+    .btn,
+    .nav-link::after,
+    .mobile-menu,
+    .accordion-panel,
+    .whatsapp-flutuante {
+      transition-property: color, background-color, border-color, opacity, transform;
+      transition-duration: 200ms;
+      transition-timing-function: ease-out;
+    }
+
+    @media (hover: hover) {
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .mobile-menu {
+      transform: translateY(-8px);
+    }
+    .mobile-menu[data-open='true'] {
+      transform: none;
+    }
+
+    .accordion-panel {
+      @starting-style {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+    }
+
+    /* Entrada das seções ao rolar. Cores em 200ms pro hover dos cartões;
+       o atraso escalonado vale só pra entrada, não pro hover. */
+    .reveal {
+      opacity: 0;
+      transform: translateY(1rem);
+      transition:
+        opacity 500ms ease-out var(--reveal-delay, 0ms),
+        transform 500ms ease-out var(--reveal-delay, 0ms),
+        color 200ms ease-out,
+        background-color 200ms ease-out,
+        border-color 200ms ease-out;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }

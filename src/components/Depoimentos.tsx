@@ -1,5 +1,7 @@
+import type { CSSProperties } from "react"
 import { TESTIMONIALS } from "../constants"
 import SectionTitle from "./SectionTitle"
+import Tag from "./Tag"
 
 export default function Depoimentos() {
   if (TESTIMONIALS.length === 0) return null
@@ -28,7 +30,7 @@ export default function Depoimentos() {
             <figure
               key={index}
               className="flex flex-col border-[1.5px] border-bordo rounded-[10px] p-6 md:p-8 bg-papel reveal"
-              style={{ transitionDelay: `${index * 80}ms` }}
+              style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
             >
               <span
                 className="font-script text-bordo text-7xl leading-[0.6] h-8 block"
@@ -43,11 +45,11 @@ export default function Depoimentos() {
                 <span className="font-sans font-semibold text-bordo">
                   {depoimento.nome}
                 </span>
-                <span className="border-[1.5px] border-bordo rounded-full px-3 py-1 font-sans font-bold text-xs uppercase tracking-[0.16em] text-bordo">
+                <Tag>
                   {[depoimento.cargo, depoimento.empresa]
                     .filter(Boolean)
                     .join(" · ")}
-                </span>
+                </Tag>
               </figcaption>
             </figure>
           ))}

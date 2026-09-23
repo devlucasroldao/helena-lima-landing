@@ -24,19 +24,21 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-papel border-b-[1.5px] border-bordo py-0"
-          : "bg-transparent border-transparent py-2"
+      className={`header-safe fixed top-0 left-0 right-0 z-50 border-b interactive ${
+        scrolled ? "bg-papel border-bordo" : "bg-transparent border-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* No topo o conteúdo desce 8px; ao rolar, sobe (transform, pra poder animar). */}
+      <div
+        className="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between interactive"
+        style={{ transform: scrolled ? undefined : "translateY(8px)" }}
+      >
         <a
           href="#"
           className="flex items-baseline gap-1 text-bordo no-underline"
         >
-          <span className="font-script text-4xl">Helena</span>
-          <span className="font-sans font-medium text-2xl tracking-[-0.02em]">
+          <span className="font-script text-3xl md:text-4xl">Helena</span>
+          <span className="font-sans font-medium text-xl md:text-2xl tracking-[-0.02em]">
             Lima
           </span>
         </a>
@@ -47,7 +49,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-cafe hover:text-bordo transition-colors font-sans"
+              className="nav-link text-cafe hover:text-bordo interactive font-sans"
             >
               {link.label}
             </a>
@@ -56,7 +58,7 @@ export default function Header() {
             href={CONTACTS.WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-bordo text-papel px-6 py-2 rounded-full font-sans font-medium hover:bg-[#5A1926] transition-all hover:-translate-y-[1px] flex items-center gap-2"
+            className="bg-bordo text-papel px-6 py-2 rounded-full font-sans font-medium hover:bg-bordo-escuro btn flex items-center gap-2"
           >
             <WhatsAppIcon size={16} />
             Conversar
@@ -65,38 +67,43 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-bordo p-2"
+          className="md:hidden text-bordo p-2 btn"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="menu-mobile"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-papel border-b-[1.5px] border-bordo p-6 flex flex-col gap-6 shadow-lg">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="text-cafe font-sans text-lg"
-            >
-              {link.label}
-            </a>
-          ))}
+      <div
+        id="menu-mobile"
+        data-open={isOpen}
+        inert={!isOpen}
+        className="mobile-menu md:hidden absolute top-full left-0 right-0 bg-papel border-b border-bordo p-6 flex flex-col gap-6"
+      >
+        {links.map((link) => (
           <a
-            href={CONTACTS.WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            key={link.href}
+            href={link.href}
             onClick={() => setIsOpen(false)}
-            className="bg-bordo text-papel px-6 py-3 rounded-full font-sans font-medium text-center w-full flex items-center justify-center gap-2"
+            className="text-cafe hover:text-bordo interactive font-sans text-lg"
           >
-            <WhatsAppIcon size={18} />
-            Conversar
+            {link.label}
           </a>
-        </div>
-      )}
+        ))}
+        <a
+          href={CONTACTS.WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setIsOpen(false)}
+          className="bg-bordo text-papel px-6 py-3 rounded-full font-sans font-medium text-center w-full hover:bg-bordo-escuro btn flex items-center justify-center gap-2"
+        >
+          <WhatsAppIcon size={18} />
+          Conversar
+        </a>
+      </div>
     </header>
   )
 }

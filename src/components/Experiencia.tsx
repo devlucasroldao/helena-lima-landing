@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react"
 import SectionTitle from "./SectionTitle"
+import Tag from "./Tag"
 
 export default function Experiencia() {
-  const colunas = [
+  const colunas: { etiqueta: string; texto?: string; itens?: string[] }[] = [
     {
       etiqueta: "O CENÁRIO",
       texto:
@@ -9,8 +11,14 @@ export default function Experiencia() {
     },
     {
       etiqueta: "O QUE EU FIZ",
-      texto:
-        "Organizei contas a pagar e a receber, montei a planilha de controle, defini uma forma mais adequada de registrar despesas e organizei o uso do sistema. Também criei uma régua de cobrança para inadimplentes, com etapas de aviso antes do bloqueio, da retirada de equipamentos e da negativação, e defini o que cobrar em cada situação.",
+      itens: [
+        "Organizei contas a pagar e a receber",
+        "Montei a planilha de controle",
+        "Defini uma forma mais adequada de registrar despesas",
+        "Organizei o uso do sistema",
+        "Criei uma régua de cobrança para inadimplentes, com etapas de aviso antes do bloqueio, da retirada de equipamentos e da negativação",
+        "Defini o que cobrar em cada situação",
+      ],
     },
     {
       etiqueta: "COMO FICOU",
@@ -27,15 +35,24 @@ export default function Experiencia() {
         {colunas.map((col, index) => (
           <div
             key={index}
-            className="flex flex-col items-start border-[1.5px] border-bordo rounded-[10px] p-6 bg-papel reveal hover:bg-white transition-colors"
-            style={{ transitionDelay: `${index * 80}ms` }}
+            className="flex flex-col items-start border-[1.5px] border-bordo rounded-[10px] p-6 bg-papel reveal hover:bg-white"
+            style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
           >
-            <span className="bg-rosa border-[1.5px] border-bordo rounded-full px-3 py-1 font-sans font-bold text-[13px] uppercase tracking-[0.16em] text-bordo mb-6 inline-block">
-              {col.etiqueta}
-            </span>
-            <p className="font-sans text-cafe mb-0 leading-relaxed">
-              {col.texto}
-            </p>
+            <Tag className="mb-6">{col.etiqueta}</Tag>
+            {col.itens ? (
+              <ul className="list-none space-y-2 p-0 m-0">
+                {col.itens.map((item, i) => (
+                  <li key={i} className="font-sans text-cafe leading-relaxed flex items-start">
+                    <span className="text-bordo mr-2" aria-hidden="true">•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="font-sans text-cafe mb-0 leading-relaxed">
+                {col.texto}
+              </p>
+            )}
           </div>
         ))}
       </div>

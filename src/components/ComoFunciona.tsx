@@ -1,26 +1,27 @@
+import type { CSSProperties } from "react"
 import SectionTitle from "./SectionTitle"
 
 export default function ComoFunciona() {
   const passos = [
     {
       num: "01",
-      titulo: "Conversa inicial:",
+      titulo: "Conversa inicial",
       texto:
         "Você me conta como o negócio funciona hoje e o que mais está pesando.",
     },
     {
       num: "02",
-      titulo: "Diagnóstico sem custo:",
+      titulo: "Diagnóstico sem custo",
       texto: "Eu olho a sua rotina e identifico onde está o nó.",
     },
     {
       num: "03",
-      titulo: "Organização:",
+      titulo: "Organização",
       texto: "Organizo começando pelo que mais trava.",
     },
     {
       num: "04",
-      titulo: "Acompanhamento:",
+      titulo: "Acompanhamento",
       texto: "Se fizer sentido pra você, sigo junto, mês a mês.",
     },
   ]
@@ -36,14 +37,14 @@ export default function ComoFunciona() {
         {passos.map((passo, index) => (
           <div
             key={index}
-            className="relative border-[1.5px] border-bordo rounded-[10px] p-6 bg-papel reveal hover:bg-white transition-colors"
-            style={{ transitionDelay: `${index * 80}ms` }}
+            className="relative border-[1.5px] border-bordo rounded-[10px] p-6 bg-papel reveal hover:bg-white"
+            style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
           >
             <h3 className="font-sans font-medium text-lg text-bordo tracking-[-0.02em] mb-2">
               {passo.titulo}
             </h3>
             <p className="font-sans text-cafe mb-8">{passo.texto}</p>
-            <div className="absolute -bottom-5 -right-3 text-7xl font-sans font-medium text-bordo bg-papel px-1 leading-none">
+            <div className="absolute -bottom-4 right-4 md:-bottom-5 md:-right-3 text-[56px] md:text-7xl font-sans font-medium text-bordo bg-papel px-1 leading-none">
               {passo.num}
             </div>
           </div>

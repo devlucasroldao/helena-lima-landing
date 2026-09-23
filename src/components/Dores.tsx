@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react"
 import {
   ArrowDownUp,
   CalendarX,
@@ -23,19 +24,17 @@ export default function Dores() {
       <div className="max-w-6xl mx-auto">
         <SectionTitle accent="Talvez" title="você se reconheça aqui" className="mb-12 max-w-3xl reveal" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-12">
           {dores.map((dor, index) => (
             <div
               key={index}
-              className={`border-[1.5px] border-bordo rounded-[10px] p-6 bg-papel reveal hover:bg-white transition-colors delay-${
-                index % 3 === 0 ? "100" : index % 3 === 1 ? "200" : "300"
-              }`}
-              style={{ transitionDelay: `${index * 80}ms` }}
+              className="flex items-start gap-3 border-[1.5px] border-bordo rounded-[10px] p-4 md:p-5 bg-papel reveal hover:bg-white"
+              style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
             >
               <dor.icon
                 size={20}
                 strokeWidth={1.5}
-                className="text-bordo mb-3"
+                className="text-bordo flex-shrink-0 mt-0.5"
                 aria-hidden="true"
               />
               <p className="font-sans text-cafe">{dor.texto}</p>

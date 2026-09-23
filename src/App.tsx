@@ -11,6 +11,7 @@ import Sobre from "./components/Sobre"
 import Duvidas from "./components/Duvidas"
 import CtaFinal from "./components/CtaFinal"
 import Footer from "./components/Footer"
+import WhatsAppFlutuante from "./components/WhatsAppFlutuante"
 
 export default function App() {
   useEffect(() => {
@@ -48,6 +49,7 @@ export default function App() {
         <CtaFinal />
       </main>
       <Footer />
+      <WhatsAppFlutuante />
     </div>
   )
 }
