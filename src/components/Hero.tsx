@@ -35,12 +35,18 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <div className="md:flex-1 w-full max-w-[min(28rem,56vh)] mx-auto aspect-[4/5] bg-rosa/30 rounded-2xl flex items-center justify-center border-[1.5px] border-bordo border-dashed overflow-hidden reveal reveal-delay-1">
-        {/* Placeholder image block */}
-        <span className="text-bordo font-medium font-sans uppercase tracking-widest text-sm">
-          [foto da Helena]
-        </span>
-      </div>
+      {/* 4:5, largura total no mobile e no máximo 70vh de altura (56vh de largura). */}
+      <img
+        src="/fotos/helena-hero.webp"
+        srcSet="/fotos/helena-hero-640.webp 640w, /fotos/helena-hero.webp 941w"
+        sizes="(min-width: 1024px) 45vw, 100vw"
+        width={941}
+        height={1176}
+        alt="Helena Lima sorrindo, de braços cruzados"
+        fetchPriority="high"
+        decoding="async"
+        className="md:flex-1 md:min-w-0 w-full max-w-[min(28rem,56vh)] h-auto mx-auto aspect-[4/5] rounded-2xl object-cover reveal reveal-delay-1"
+      />
     </section>
   )
 }

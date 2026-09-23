@@ -10,11 +10,15 @@ export default function Sobre() {
           className="w-full md:col-start-2 md:row-start-1 md:self-end reveal"
         />
         <div className="flex justify-center md:col-start-1 md:row-start-1 md:row-span-2 md:self-center reveal">
-          <div className="w-full max-w-[18rem] md:max-w-md aspect-square bg-rosa/30 rounded-full flex items-center justify-center border-[1.5px] border-bordo border-dashed overflow-hidden">
-            <span className="text-bordo font-medium font-sans uppercase tracking-widest text-sm">
-              [foto da Helena]
-            </span>
-          </div>
+          <img
+            src="/fotos/helena-sobre.webp"
+            width={800}
+            height={800}
+            alt="Helena Lima sorrindo"
+            loading="lazy"
+            decoding="async"
+            className="w-full max-w-[18rem] md:max-w-md h-auto aspect-square rounded-full object-cover object-center"
+          />
         </div>
         <div className="md:col-start-2 md:row-start-2 reveal reveal-delay-1">
           <div className="font-sans text-cafe text-lg space-y-4">

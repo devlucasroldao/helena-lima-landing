@@ -26,6 +26,8 @@ Landing page de Helena Lima, gestão administrativa (financeiro, atendimento, ag
   - `NAV_LINKS`: links de navegação do rodapé, na ordem da página
   - `TESTIMONIALS`: depoimentos
 - `src/index.css`: import do Tailwind, tokens de cor/fonte e estilos globais
+- `public/`: arquivos servidos como estão (favicons, `og-image.png`)
+- `public/fotos/`: fotos da Helena (`helena-hero.webp` e `helena-hero-640.webp` no hero, `helena-sobre.webp` no Sobre)
 - `index.html`: shell do Vite; é aqui que as Google Fonts são carregadas
 - `vite.config.ts`: configuração padrão (React, Tailwind e alias `@` para `src`). O `<head>` (title, meta, Open Graph) é fixo no `index.html`, não gerado pelo Vite.
 
@@ -83,6 +85,11 @@ Estilo:
 - **Etiquetas** sempre via `Tag.tsx`. Não criar outro estilo de etiqueta.
 - **Ícones de marca** (WhatsApp, Instagram) sempre com o path oficial do Simple Icons, sem redesenhar nem trocar por ícone genérico.
 - **Botão flutuante de WhatsApp** (`WhatsAppFlutuante`): some enquanto o hero (`#inicio`), o CTA final (`#contato`) ou o rodapé estão na tela. Se mudar esses ids, atualize o componente.
+
+## Fotos
+
+- Sempre em **WebP**, dentro de `public/fotos/`.
+- Toda `<img>` sempre com `width`, `height` (dimensões reais do arquivo, pra não haver salto de layout) e `alt`.
 
 ## Fluxo de trabalho
 
