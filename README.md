@@ -7,7 +7,9 @@
 Landing page de apresentação e contato da Helena Lima, profissional de gestão administrativa que organiza o financeiro, o atendimento e a rotina de MEIs, autônomos e empresas, 100% online.
 
 **[helena-lima-landing.vercel.app](https://helena-lima-landing.vercel.app)**
+
    ![Preview da landing page](public/preview.png)
+
 
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
